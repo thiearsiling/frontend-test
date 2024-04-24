@@ -9,10 +9,10 @@ function App() {
   return (
     <UserContextComponent>
       <Grid container spacing={1} p={2}>
-        <Grid item md={4}>
+        <Grid item xs={12} lg={2}>
           <SymbolsTable />
         </Grid>
-        <Grid item md={8}>
+        <Grid item xs={12} lg={10}>
           <UserTable />
         </Grid>
       </Grid>

@@ -3,6 +3,7 @@ export interface IRows {
   symbol: string;
   c?: string;
   b?: string;
+  P?: string;
 }
 
 export interface IStream {
