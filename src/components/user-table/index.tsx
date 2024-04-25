@@ -134,7 +134,10 @@ function UserTable() {
             </FormControl>
           </Grid>
           <Grid item>
-            <IconButton style={{ background: purple[500], borderRadius: 10 }}>
+            <IconButton
+              style={{ background: purple[500], borderRadius: 10 }}
+              onClick={() => context.addList()}
+            >
               <AddIcon style={{ color: "#FFF" }} />
             </IconButton>
           </Grid>
@@ -145,6 +148,7 @@ function UserTable() {
 
   useEffect(() => {
     setRows(context.symbols);
+    setCurrentList(context.currentList);
     if (context.symbols.length) {
       subscribe(context.symbols.map((sym) => sym.symbol));
     }

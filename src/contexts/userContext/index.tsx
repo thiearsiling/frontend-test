@@ -6,13 +6,10 @@ const initialValues: IContext = {
       id: "A",
       symbols: [],
     },
-    {
-      id: "B",
-      symbols: [],
-    },
   ],
   currentList: "A",
   changeList: () => {},
+  addList: () => {},
   symbols: [],
   addSymbols: () => {},
 };
@@ -23,6 +20,7 @@ export interface IContext {
   lists: Array<any>;
   currentList: string;
   changeList: Function;
+  addList: Function;
   symbols: Array<any>;
   addSymbols: Function;
 }
@@ -48,10 +46,26 @@ const UserContextComponent = ({ children }: IProps) => {
     const listIndex = lists.findIndex((list) => list.id === newList);
     setSymbols(lists[listIndex].symbols);
     setCurrentList(newList);
-    // setSymbols(lists)
   };
 
-  const value = { lists, currentList, changeList, symbols, addSymbols };
+  const addList = () => {
+    const id = String.fromCharCode(
+      lists[lists.length - 1].id.charCodeAt(0) + 1
+    );
+    const newList = { id, symbols: [] };
+    setLists([...lists, newList]);
+    setCurrentList(id);
+    setSymbols([]);
+  };
+
+  const value = {
+    lists,
+    currentList,
+    changeList,
+    addList,
+    symbols,
+    addSymbols,
+  };
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;
 };
